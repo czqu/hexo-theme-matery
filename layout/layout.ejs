@@ -2,6 +2,10 @@
 <html lang="<%= config.language %>">
 <%- partial('_partial/head') %>
 
+<% if (theme.background.enable) { %>
+   <%- partial('_partial/background') %>
+<% } %>
+
 <body>
     <%- partial('_partial/header') %>
     <%- body %>
@@ -9,7 +13,6 @@
     <%- partial('_partial/footer') %>
 
     <%- partial('_partial/search') %>
-    <%- partial('_widget/day-night') %>
     <%- partial('_partial/back-top') %>
 
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.materialize) %>"></script>
@@ -30,7 +33,7 @@
     <% } %>
 
     <% if (theme.sakura.enable) { %>
-        
+
         <script type="text/javascript">
             // 只在桌面版网页启用特效
             var windowWidth = $(window).width();
@@ -41,7 +44,7 @@
     <% } %>
 
     <!-- 雪花特效 -->
-    <% if (theme.snowdown.enable) { %> 
+    <% if (theme.snowdown.enable) { %>
         <script type="text/javascript">
             // 只在桌面版网页启用特效
             var windowWidth = $(window).width();
@@ -52,7 +55,7 @@
     <% } %>
 
     <!-- 鼠标星星特效 -->
-    <% if (theme.mouseStar.enable) { %> 
+    <% if (theme.mouseStar.enable) { %>
         <script type="text/javascript">
             // 只在桌面版网页启用特效
             var windowWidth = $(window).width();
@@ -62,7 +65,7 @@
         </script>
     <% } %>
 
-    <% if (theme.tcaptcha.enable) { %> 
+    <% if (theme.tcaptcha.enable) { %>
         <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
         <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.tcaptcha) %>"></script>
         <button id="TencentCaptcha" data-appid="<%- theme.tcaptcha.appid %>" data-cbfn="callback" type="button" hidden></button>
@@ -74,7 +77,7 @@
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.clicklove) %>" async="async"></script>
     <% } %>
     <% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
-    <script async src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.busuanzi) %>"></script>
+    <script async src="<%- url_for(theme.libs.js.busuanzi) %>"></script>
     <% } %>
 
     <% if (theme.tidio.enable) { %>
@@ -141,7 +144,7 @@
         src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.canvas_nest) %>"></script>
     <% } %>
 
-    <% if (theme.ribbon.enable) { %>
+    <% if (!is_home()&&theme.ribbon.enable) { %>
     <% var ribbonSrc = theme.ribbon.clickChange ? theme.libs.js.ribbon : theme.libs.js.ribbonRefresh; %>
     <script type="text/javascript" size="<%- theme.ribbon.size %>" alpha='<%- theme.ribbon.alpha %>'
         zIndex="<%- theme.ribbon.zIndex %>" src="<%- theme.jsDelivr.url %><%- url_for(ribbonSrc) %>" async="async"></script>

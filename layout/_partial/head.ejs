@@ -39,6 +39,8 @@
     var description = config.description ? config.description : config.title;
     if (page.summary) {
         description = page.summary;
+	} else if (page.description) {
+		description = page.description;
     } else if (page.hasOwnProperty('__post') && page.__post) {
         description = strip_html(page.content).substring(0, 120);
     }
@@ -65,6 +67,7 @@
     <meta name="keywords" content="<%= keyWords %>">
     <meta name="description" content="<%= description %>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%- autoCanonical(config, page) %> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
@@ -75,8 +78,14 @@
     <%- partial('_partial/google-analytics') %>
     <title><%= pageTitle %></title>
     <link rel="icon" type="<%= iconType %>" href="<%- theme.jsDelivr.url %><%- url_for(theme.favicon) %>">
-    <%- partial('_partial/main-style') %>
 
+    <link rel="stylesheet" type="text/css" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.fontAwesome) %>">
+    <link rel="stylesheet" type="text/css" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.materialize) %>">
+    <link rel="stylesheet" type="text/css" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.aos) %>">
+    <link rel="stylesheet" type="text/css" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.animate) %>">
+    <link rel="stylesheet" type="text/css" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.lightgallery) %>">
+    <link rel="stylesheet" type="text/css" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.matery) %>">
+    <link rel="stylesheet" type="text/css" href="<%- theme.jsDelivr.url %><%- url_for(theme.libs.css.mycss) %>">
     <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.jquery) %>"></script>
 
 </head>

@@ -1,0 +1,29 @@
+{
+    "name": "hexo-theme-matery",
+    "version": "2.0.3",
+    "private": false,
+    "description": "This is a Hexo blog theme with 'Material Design' and responsive design.",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/czqu/hexo-theme-matery.git"
+    },
+    "keywords": [
+      "hexo",
+      "theme",
+      "hexo-theme",
+      "matery",
+      "material"
+    ],
+    "author": "czqu (https://github.com/czqu)",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/czqu/hexo-theme-matery/issues"
+    },
+    "homepage": "https://github.com/czqu/hexo-theme-matery",
+    "engines": {
+      "node": ">=12.10.0"
+    },
+    "peerDependencies": {
+      "nunjucks": "^3.0.0"
+    }
+  }

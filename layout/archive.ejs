@@ -31,8 +31,8 @@
     var month = '1970-01';
 
     // post feature image.
-    var featureimg = '/medias/featureimages/0.jpg';
-    var featureImages = theme.featureImages;
+    var featureimg = '/medias/featureimages/thumbnail/0.jpg';
+    var featureImages = theme.featureImagesThumbnail;
     %>
 
     <div id="cd-timeline" class="container">
@@ -73,7 +73,7 @@
                                 <%
                                     featureimg = featureImages[Math.abs(hashCode(post.title) % featureImages.length)];
                                 %>
-                                <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= post.title %>">
+                                <img src="<%- url_for(featureimg) %>" class="responsive-img" alt="<%= post.title %>">
                                 <% } %>
                                 <span class="card-title"><%= post.title %></span>
                             </div>

@@ -6,17 +6,30 @@
     </div>
     <% } %>
     <div class="row">
-		<% if (theme.video.url) { %>
+    <% if (theme.video.url) { %>
         <div class="col l8 offset-l2 m10 offset-m1 s12">
             <div id="dplayer" class="dplayer-video"
                     <% if (theme.video.height) { %> style="height: <%- theme.video.height %>px;"<% } %>></div>
         </div>
-		<% }else{ %>
-			<iframe src='<% if (theme.video.iframeUrl) { %><%- url_for(theme.video.iframeUrl) %><% } %>' scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" align="middle" <% if (theme.video.height) { %> style="height: <%- theme.video.height %>px;"<% } %> width="100%"> </iframe>
-		<% } %>
-    </div>
-</div>
+                        <% }else{ %>
+                        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <iframe src='<% if (theme.video.iframeUrl) { %><%- url_for(theme.video.iframeUrl) %><% } %>' scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" align="middle" <% if (theme.video.height) { %> style="height: <%- theme.video.height %>px;"<% } %> width="100%"> </iframe>
+        </div>
+        <% } %>
+       
+        
+                 <% if (theme.video.extraText) { %>  
 
+               <div class="col l8 offset-l2 m10 offset-m1 s12"> 
+                <br>
+                <br>
+              <%- theme.video.extraText %>
+               </div>
+              <% } %>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.dplayer) %>"></script>
 <script>
     $(function () {

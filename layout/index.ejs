@@ -4,6 +4,20 @@
     <%- partial('_partial/bg-cover') %>
 <% } %>
 <%- partial('_partial/bg-video') %>
+<% if (theme.mourn&&theme.mourn.enable) { %>
+<style type="text/css">
+    html{
+        　　filter:grayscale(100%);
+        　　-webkit-filter:grayscale(100%);
+        　　-moz-filter:grayscale(100%);
+        　　-ms-filter:grayscale(100%);
+        　　-o-filter:grayscale(100%);
+        　　filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+        　　-webkit-filter:grayscale(1)
+    }
+</style>
+<% } %>
+
 <main class="content">
 
     <% if (page.current === 1
@@ -64,14 +78,14 @@
                             <img src="<%- url_for(post.img) %>" class="responsive-img" alt="<%= post.title %>">
                             <% } else { %>
                             <%
-                                var featureimg = '/medias/featureimages/0.jpg';
-                                var featureImages = theme.featureImages;
+                                var featureimg = '/medias/featureimages/thumbnail/0.jpg';
+                                var featureImages = theme.featureImagesThumbnail;
                                 if (!featureImages || featureImages.length == 0) {
                                     return featureimg;
                                 }
                                 featureimg = featureImages[Math.abs(hashCode(post.title) % featureImages.length)]
                             %>
-                            <img src="<%- theme.jsDelivr.url %><%- url_for(featureimg) %>" class="responsive-img" alt="<%= post.title %>">
+                            <img src="<%- url_for(featureimg) %>" class="responsive-img" alt="<%= post.title %>">
                             <% } %>
                             <span class="card-title"><%= post.title %></span>
                         </div>
